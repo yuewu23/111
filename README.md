@@ -4,9 +4,11 @@ We evaluate the effectiveness of the tool by answering the following questions:
 
 - **RQ1:** How does the rendering performance of the layout improve after ffxing the hierarchical issues
 using our method?
+
 - **RQ2:** Does the layout maintain visual consistency with the original layout after the optimizing process?
 
 For RQ1, we evaluate whether the rendering performance of the layout improves after ffxing the hierarchical issues using our method and whether LayoutOptimizer can effectively preserve the readability of UI code while optimizing Android layout issues.
+
 For RQ2, we aim to evaluate whether the layout maintain visual consistency with the original layout after the optimizing process.
 
 ## Experimental Dataset Collection
@@ -28,39 +30,27 @@ Clock                          | Time                          | alarm_activity
 
 
 
-In order to evaluate the effectiveness of this method, we selected 12 apps from the famous open source
-Android application website F-droid. The 12 apps belongs to seven categories: image, reading, multimedia,
-calling and texting, connectivity, and money management and time. The criteria for selecting these 12
-apps from different domains were primarily based on their comparative standing with other apps within
-the same ffeld. A portion of these apps, such as Simple Gallery Pro, home-assistant, and kotatsu, boast
-download counts exceeding one million on Google Play Store. The other segment of apps, including Catima,
-MeditationAssistant, Meshenger, and StinglePhotos, have received a substantial number of positive reviews,with ratings above 4.5 on the Google Play Store.Additionally,all these apps are compatible with Android
-version 6.0 and above.From these apps,we manually screened the layouts according to the deffnitions of
-Redundant Containers (RCs) or Inappropriate Containers (ICs) within the layout graph. A total of 31
-layouts containing RC or IC issues were selected for inclusion in the study. 
+In order to evaluate the effectiveness of this method, we selected 12 apps from the famous open source Android application website F-droid. The 12 apps belongs to seven categories: image, reading, multimedia, calling and texting, connectivity, and money management and time. The criteria for selecting these 12 apps from different domains were primarily based on their comparative standing with other apps within the same ffeld. A portion of these apps, such as Simple Gallery Pro, home-assistant, and kotatsu, boast download counts exceeding one million on Google Play Store. The other segment of apps, including Catima, MeditationAssistant, Meshenger, and StinglePhotos, have received a substantial number of positive reviews,with ratings above 4.5 on the Google Play Store.Additionally,all these apps are compatible with Android version 6.0 and above.From these apps,we manually screened the layouts according to the deffnitions of Redundant Containers (RCs) or Inappropriate Containers (ICs) within the layout graph. A total of 31 layouts containing RC or IC issues were selected for inclusion in the study. 
 
-Our experimental machine is conffgured with 16GB memory, Intel Core i7-10700 64-bit CPU, and Windows
- 11. We set the population in the genetic algorithm to 100, iterate for a maximum of 1000 rounds, and
-terminate the search process with no better results for 200 consecutive rounds.
+Our experimental machine is conffgured with 16GB memory, Intel Core i7-10700 64-bit CPU, and Windows 11. We set the population in the genetic algorithm to 100, iterate for a maximum of 1000 rounds, and terminate the search process with no better results for 200 consecutive rounds.
 
 
 ## RQ1: Rendering Performance and UI Code Readability Evaluation
 
-To answer RQ1, we evaluate whether the rendering performance of the layout improves after fixing the
-hierarchical issues using our method and whether LayoutOptimizer can effectively preserve the readability
-of UI code while optimizing Android layout issues.To evaluate whether LayoutOptimizer can effectively preserve the readability of UI code while optimizing Android layout issues, we conducted an experiment in which developers rated the readability of the UI code.
+To answer RQ1, we evaluate whether the rendering performance of the layout improves after fixing the hierarchical issues using our method and whether LayoutOptimizer can effectively preserve the readability of UI code while optimizing Android layout issues.To evaluate whether LayoutOptimizer can effectively preserve the readability of UI code while optimizing Android layout issues, we conducted an experiment in which developers rated the readability of the UI code.
 
 ### Rendering Performance
 
-We implemented LayoutOptimizer as an Android library and compiled it into an Android Archive (AAR) file. Developers can conveniently optimize their layout performance by adding our AAR file as a dependency to their projects (as demonstrated in the open-source prototype of LayoutOptimizer). To utilize our tool, developers need to provide the Android runtime environment and relevant resources for the layout to be optimized. If you wish to use our tool, you can integrate our AAR file into your project as a dependency, copy our example code into a unit test, and modify the input to correspond with files from dataset.
+We implemented LayoutOptimizer as an Android library and compiled it into an Android Archive (AAR) file. Developers can conveniently optimize their layout performance by adding our AAR file as a dependency to their projects (as demonstrated in the open-source prototype of LayoutOptimizer). To utilize our tool, developers need to provide the Android runtime environment and relevant resources for the layout to be optimized. If you wish to use our tool, you can integrate our AAR file into your project as a dependency, copy our example code into a unit test, and modify the input to correspond with XML file from dataset.
 
-We compare the rendering time spent in the layout-and-measure phase (abbreviated as rendering time) between origin layout and optimized layout on the Android emulator. The emulator we select is Pixel 2 (Android 11.0, 1.5GB RAM), which is a software-based tool that allows developers to simulate the behavior of a Google Pixel 2 device on their computer and is commonly used in Android app development to test applications.
-We use the high-resolution clock source System.nanoTime() provided by JAVA to accurately record the time spends in the layout-and-measure phase. For each layout, we render it 100 times, recording the time spent in the layout-and-measure phase for each rendering, and take the average as the ffnal result. In the experiment, the Androi API version is 30.0, the Java version is 1.8.
+We compare the rendering time spent in the layout-and-measure phase (abbreviated as rendering time) between origin layout and optimized layout on the Android emulator. The emulator we select is Pixel 2 (Android 11.0, 1.5GB RAM), which is a software-based tool that allows developers to simulate the behavior of a Google Pixel 2 device on their computer and is commonly used in Android app development to test applications. We use the high-resolution clock source System.nanoTime() provided by JAVA to accurately record the time spends in the layout-and-measure phase. For each layout, we render it 100 times, recording the time spent in the layout-and-measure phase for each rendering, and take the average as the ffnal result. In the experiment, the Androi API version is 30.0, the Java version is 1.8.
 
 ### UI Code Readability Evaluation
 
 1.Participants recruitment: We posted a recruitment notice on Little Red Book , which included an introduction to LayoutOptimizer and a request for developers to rate some UI code. A total of 10 developers responded to the recruitment. After communication and assessment (such as their name, age, and development experience), we found that 4 of the developers had relatively limited experience. Therefore, we selected 6 developers with over 3 years of development experience, aged between 33 and 48, to participate in the experiment. Each participant will receive a $30 shopping card as a reward after completing the experiment.
+
 2.Preparation: To ensure the smooth conduct of the experiment and protect the participants’ rights, we provided a brief training session before the experiment began. This training included an overview of the experiment and clear instructions on the task, informing participants that they would be asked to rate the readability of UI code on a scale from 1 to 5. We also assured participants that their personal information would only be used for this study and would not be used for any other purposes. Additionally, all participants in the user study signed an informed consent form. We provided detailed information about the study, including the research objectives, procedures, potential risks, and beneffts. Before voluntarily agreeing to participate, participants were allowed to ask questions and clarify any concerns. Furthermore, we ensured that participants’ identities were kept conffdential and would not be disclosed to anyone outside the research team. We also informed participants of their right to withdraw from the study at any time without any negative consequences.
+
 3.Research settings: The study involved the following steps. First, we randomly selected one app from each of the seven categories in our dataset for evaluation. We then randomly divided the six participants into three groups, with two participants in each group, denoted as g1, g2, and g3. The apps required for the experiment were also divided into three groups (the ffrst two groups with two apps each, and the third group with three apps), labeled as a, b, and c, and further subdivided based on three types of UI code for each layout: a1, b1, c1 representing the original code, a2, b2, c2 representing the LayoutOptimizer-optimized code, and a3, b3, c3 representing the Baseline-optimized code. Participants in group g1 were responsible for rating a1, b2, and c3, group g2 rated a2, b3, and c1, and group g3 rated a3, b1, and c2. The assignment of apps to participants was completely randomized, and the evaluations were conducted in parallel. This grouping method aimed to effectively reduce participant bias due to memory, ensuring more controlled experimental results. Additionally, we assigned a staff member to each participant to assist with any issues that might arise during the rating process. The staff member’s role was to assist and clarify, without interfering with the participants’ evaluation process. After completing this process, we collected and analyzed the scores for all UI codes and visualized the results by creating box plots grouped by app categories.
 
 ### Baseline
@@ -90,14 +80,13 @@ which reduces the rendering time by 39.49%. For the 31 layouts, our method resol
 
 ## RQ2: Visual Consistency Maintaining Evaluation
 
-Maintaining the visual consistency of the layout is an important goal of this paper when ffxing the
-hierarchical problem in the layout. In this RQ, we aim to evaluate whether the layout maintain visual
-consistency with the original layout after the optimizing process.
+Maintaining the visual consistency of the layout is an important goal of this paper when ffxing the hierarchical problem in the layout. In this RQ, we aim to evaluate whether the layout maintain visual consistency with the original layout after the optimizing process.
 
 
 ### Setup
 
 Visual consistency maintaining consists of two progressive sub-goals, the ffrst sub-goal is to make the layout render the same for a speciffc screen size, and the second sub-goal is to make the layout render the same for all other screen sizes. The second sub-goal is important for layouts that are adaptable to different screen sizes. Android smartphones come in many different screen sizes, and it would be diﬀﬀcult to verify this 500 approach on all screen sizes. Therefore, we selected three screen sizes: 5.0 inches, 6.7 inches, and 6.4 inches, to verify the method’s ability to maintain layout visual consistency. According to the 2022 data, these three screen sizes are the most commonly used globally, accounting for 11.59%, 32.1%, and 16.1%, respectively. All layout optimization were performed on the Pixel 2 (5.0 inches). Therefore, to verify whether the method achieves the ffrst sub-goal, we evaluate whether the optimized layout has the same rendering effect as the original layout on the 5.0-inch screen. To verify the second sub-goal, we evaluate whether the optimized layout and the original layout have the same rendering effect on screens of 6.7 inches, 6.6 inches and 6.4 inches.
+
 Our method only changes the size and position of components without modifying their visual attributes, such as background images, colors, or fonts. Therefore, to verify whether the rendering effects of the repaired layout and the original layout are the same, we only to compare the size and position of the components in the two layouts. Speciffcally, we measure the visual consistency of the repair layout based on the pixels occupied by each visual component (View or container with background, and its visibility attribute is True) before and after optimization. Speciffcally, if a pixel belongs to the same visual component in both the original and the optimized layout, we consider the pixel correct. 
 
 ### Results
